@@ -1,0 +1,4 @@
+enum Drags {
+  PopcornToAdd,
+  PopcornToDelete;
+}

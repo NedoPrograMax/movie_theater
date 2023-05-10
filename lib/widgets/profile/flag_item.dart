@@ -31,11 +31,6 @@ class FlagItem extends StatelessWidget {
           builder: (context) => AlertDialog(
             content: Text(
               LocaleKeys.restart_for_localize.tr(),
-              style: TextStyle(
-                color: Theme.of(context).brightness == Brightness.light
-                    ? Colors.black
-                    : Colors.white,
-              ),
             ),
             actions: [
               ElevatedButton(

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_theater/core/extensions.dart';
 import 'package:movie_theater/initialize.dart';
 import 'package:movie_theater/models/movie/movie_model.dart';
-import 'package:movie_theater/repositories/api_repository.dart';
+import 'package:movie_theater/repositories/network_repository.dart';
 import 'package:movie_theater/widgets/movie/movie_screen.dart';
 import 'package:movie_theater/widgets/movies/movie_item_shape.dart';
 import 'package:movie_theater/core/routes/movies_routes_generator.dart';
@@ -37,7 +37,7 @@ class MovieCard extends StatelessWidget {
             if (rotationController.value.isFront()) {
               Navigator.of(context).pushNamed(
                 MoviesRoutesGenerator.movie,
-                arguments: sl<ApiRepository>().getMovieFromCache(movie.id),
+                arguments: sl<NetworkRepository>().getMovieFromCache(movie.id),
               );
             }
           },

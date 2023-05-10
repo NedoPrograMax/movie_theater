@@ -18,41 +18,33 @@ class DayScheduale extends StatefulWidget {
 
 class _DaySchedualeState extends State<DayScheduale> {
   late final LinkedScrollControllerGroup _controllers;
-  late final ScrollController _hours;
-  late final ScrollController _sessions;
+  late final ScrollController _hoursScrollController;
+  late final ScrollController _sessionsScrollController;
 
   @override
   void initState() {
     super.initState();
     _controllers = LinkedScrollControllerGroup();
-    _hours = _controllers.addAndGet();
-    _sessions = _controllers.addAndGet();
+    _hoursScrollController = _controllers.addAndGet();
+    _sessionsScrollController = _controllers.addAndGet();
   }
 
   @override
   void dispose() {
-    _hours.dispose();
-    _sessions.dispose();
+    _hoursScrollController.dispose();
+    _sessionsScrollController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        BlocBuilder<RoomCubit, RoomCubitState>(
-          builder: (context, state) => RoomChooser(state.rooms),
-          buildWhen: (previous, current) => previous.rooms != current.rooms,
-        ),
-        Expanded(
-          child: Stack(
-            children: [
-              HoursList(_hours),
-              SesionsList(_sessions),
-            ],
-          ),
-        ),
-      ],
+    return Expanded(
+      child: Stack(
+        children: [
+          HoursList(_hoursScrollController),
+          SesionsList(_sessionsScrollController),
+        ],
+      ),
     );
   }
 }

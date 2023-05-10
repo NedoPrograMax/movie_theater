@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CounterPainter extends CustomPainter {
+  final Color color;
+
+  const CounterPainter(this.color);
+
   @override
   void paint(Canvas canvas, Size size) {
     final path = Path();
@@ -9,7 +13,7 @@ class CounterPainter extends CustomPainter {
     path.lineTo(size.width, 0);
     path.lineTo(size.width * 0.5, size.height * 0.35);
     path.close();
-    final paint = Paint()..color = Colors.red;
+    final paint = Paint()..color = color;
     canvas.drawPath(path, paint);
   }
 

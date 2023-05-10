@@ -33,7 +33,17 @@ class BookingScreen extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-            colors: [Colors.black, Colors.blue.shade900, Colors.black],
+            colors: Theme.of(context).brightness == Brightness.light
+                ? [
+                    Colors.blue.shade500,
+                    //    Colors.green.shade400,
+                    Colors.blue.shade200
+                  ]
+                : [
+                    Colors.black,
+                    Colors.blue.shade900,
+                    Colors.black,
+                  ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           )),

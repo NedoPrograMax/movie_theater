@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:movie_theater/repositories/api_repository.dart';
+import 'package:movie_theater/repositories/network_repository.dart';
 import 'package:movie_theater/data_sources/movie_data_source.dart';
 import 'package:movie_theater/repositories/local_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,7 +11,7 @@ final sl = GetIt.asNewInstance();
 
 Future<void> initialize() async {
   sl.registerLazySingleton(
-      () => ApiRepository(movieDataSource: MovieDataSource()));
+      () => NetworkRepository(movieDataSource: MovieDataSource()));
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => LocalRepository(sharedPrefferenes: prefs));
 

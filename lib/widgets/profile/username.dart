@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:movie_theater/generated/locale_keys.g.dart';
-import 'package:movie_theater/repositories/api_repository.dart';
+import 'package:movie_theater/repositories/network_repository.dart';
 import 'package:movie_theater/initialize.dart';
 
 class Username extends HookWidget {
@@ -12,21 +12,17 @@ class Username extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nameFuture = useMemoized(() => sl<ApiRepository>().fetchUsername());
+    final nameFuture =
+        useMemoized(() => sl<NetworkRepository>().fetchUsername());
     final name = useFuture(nameFuture);
     if (name.connectionState == ConnectionState.done) {
       final controller = useTextEditingController(text: name.data);
       return IntrinsicWidth(
         child: TextField(
-          style: TextStyle(
-            color: Theme.of(context).brightness == Brightness.light
-                ? Colors.black
-                : Colors.white,
-          ),
           textAlign: TextAlign.center,
           controller: controller,
           decoration: InputDecoration(hintText: LocaleKeys.username_hint.tr()),
-          onSubmitted: (value) => sl<ApiRepository>().updateUsername(value),
+          onSubmitted: (value) => sl<NetworkRepository>().updateUsername(value),
         ),
       );
     }

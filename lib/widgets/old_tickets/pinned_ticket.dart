@@ -40,6 +40,7 @@ class PinnedTicket extends HookWidget {
       return TicketsTab(
         tickets,
         scale: 0.9,
+        isDragging: true,
       );
     }
 

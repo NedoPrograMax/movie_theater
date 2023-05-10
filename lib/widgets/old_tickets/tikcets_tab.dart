@@ -9,9 +9,11 @@ import 'package:movie_theater/widgets/new_tickets/ticket.dart';
 class TicketsTab extends HookWidget {
   final List<TicketModel> tickets;
   final double scale;
+  final bool isDragging;
   const TicketsTab(
     this.tickets, {
     this.scale = 1,
+    this.isDragging = false,
     super.key,
   });
 
@@ -26,16 +28,19 @@ class TicketsTab extends HookWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (tabController.length > 1)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    AnimatedBuilder(
-                        animation: tabController,
-                        builder: (context, child) => CountDisplayer(
-                            '${tabController.index + 1}/${tabController.length}')),
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  AnimatedBuilder(
+                    animation: tabController,
+                    builder: (context, child) => CountDisplayer(tabController
+                                .length >
+                            1
+                        ? '${tabController.index + 1}/${tabController.length}'
+                        : ""),
+                  ),
+                ],
+              ),
               SizedBox(
                 height: height,
                 child: TabBarView(
@@ -46,23 +51,29 @@ class TicketsTab extends HookWidget {
                         (ticket) => Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Draggable<TicketModel>(
-                              affinity: Axis.vertical,
-                              data: tickets.first,
-                              onDragCompleted: () => isShowing.value = false,
-                              feedback: Material(
-                                color: Colors.transparent,
-                                child: Ticket(
-                                  ticket,
-                                  scale: scale,
-                                ),
-                              ),
-                              childWhenDragging: Container(),
-                              child: Ticket(
-                                ticket,
-                                scale: scale,
-                              ),
-                            ),
+                            isDragging
+                                ? Draggable<TicketModel>(
+                                    affinity: Axis.vertical,
+                                    data: tickets.first,
+                                    onDragCompleted: () =>
+                                        isShowing.value = false,
+                                    feedback: Material(
+                                      color: Colors.transparent,
+                                      child: Ticket(
+                                        ticket,
+                                        scale: scale,
+                                      ),
+                                    ),
+                                    childWhenDragging: Container(),
+                                    child: Ticket(
+                                      ticket,
+                                      scale: scale,
+                                    ),
+                                  )
+                                : Ticket(
+                                    ticket,
+                                    scale: scale,
+                                  ),
                           ],
                         ),
                       )

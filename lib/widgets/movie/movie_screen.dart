@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:movie_theater/repositories/api_repository.dart';
+import 'package:movie_theater/repositories/network_repository.dart';
 import 'package:movie_theater/initialize.dart';
 import 'package:movie_theater/models/movie/movie.dart';
 import 'package:movie_theater/models/session/movie_session.dart';

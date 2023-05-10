@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_theater/repositories/api_repository.dart';
+import 'package:movie_theater/repositories/network_repository.dart';
 import 'package:movie_theater/initialize.dart';
 import 'package:movie_theater/models/session/seat.dart';
 import 'package:movie_theater/models/session/seat_model.dart';
@@ -35,7 +35,7 @@ class BookingCubit extends Cubit<BookingState> {
   }
 
   Future<bool> bookSeats() async {
-    final success = await sl<ApiRepository>().bookSeats(
+    final success = await sl<NetworkRepository>().bookSeats(
       state.bookedSeats.toList(),
     );
     if (success) {

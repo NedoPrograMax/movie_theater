@@ -25,7 +25,11 @@ class PayingStepper extends HookWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final currentStep = useState(0);
-
+    final textStyle = TextStyle(
+      color: Theme.of(context).brightness == Brightness.light
+          ? Colors.black
+          : Colors.white,
+    );
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -49,11 +53,17 @@ class PayingStepper extends HookWidget {
             ),
             steps: [
               Step(
-                title: Text(LocaleKeys.user_data.tr()),
+                title: Text(
+                  LocaleKeys.user_data.tr(),
+                  style: textStyle,
+                ),
                 content: UserData(form: form),
               ),
               Step(
-                title: Text(LocaleKeys.paying_data.tr()),
+                title: Text(
+                  LocaleKeys.paying_data.tr(),
+                  style: textStyle,
+                ),
                 content: const PayingData(),
               ),
             ],

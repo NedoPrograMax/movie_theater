@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:movie_theater/core/utils.dart';
-import 'package:movie_theater/repositories/api_repository.dart';
+import 'package:movie_theater/repositories/network_repository.dart';
 import 'package:movie_theater/initialize.dart';
 
 import 'package:movie_theater/state/booking_cubit/booking_cubit.dart';
@@ -26,8 +26,9 @@ class NewTicketsScreen extends HookWidget {
       () => Future.wait(
         context.read<BookingCubit>().state.bookedSeats.map(
               (seat) => context.read<MovieCubit>().state.currentMovie.toTicket(
-                    date: sl<ApiRepository>().lastSession?.date ?? 0,
-                    roomName: sl<ApiRepository>().lastSession?.room.name ?? "",
+                    date: sl<NetworkRepository>().lastSession?.date ?? 0,
+                    roomName:
+                        sl<NetworkRepository>().lastSession?.room.name ?? "",
                     seat: seat,
                   ),
             ),

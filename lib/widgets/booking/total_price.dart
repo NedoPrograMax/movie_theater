@@ -13,8 +13,11 @@ class TotalPrice extends StatelessWidget {
     return FittedBox(
       child: Text(
         "$value ${LocaleKeys.uah.tr()}",
-        style: const TextStyle(
+        style: TextStyle(
           fontWeight: FontWeight.bold,
+          color: Theme.of(context).brightness == Brightness.light
+              ? Colors.black
+              : Colors.white,
         ),
       ),
     );

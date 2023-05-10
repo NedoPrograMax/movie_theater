@@ -8,7 +8,7 @@ import 'package:movie_theater/models/session/movie_session.dart';
 import 'package:movie_theater/models/session/room_model.dart';
 import 'package:movie_theater/models/session/session.dart';
 import 'package:movie_theater/models/session/session_ui.dart';
-import 'package:movie_theater/repositories/api_repository.dart';
+import 'package:movie_theater/repositories/network_repository.dart';
 
 class SessionModel extends Equatable {
   final int id;

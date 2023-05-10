@@ -12,27 +12,24 @@ class CountDisplayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (count.isNotEmpty) {
-      return CustomPaint(
-        painter: CounterPainter(),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                count,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.amber,
-                  fontSize: 40,
-                ),
+    return CustomPaint(
+      painter: CounterPainter(count.isEmpty ? Colors.transparent : Colors.red),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              count.isEmpty ? "  " : count,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.amber,
+                fontSize: 40,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
-    }
-    return Container();
+      ),
+    );
   }
 }

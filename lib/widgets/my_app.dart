@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:movie_theater/core/constants.dart';
 import 'package:movie_theater/initialize.dart';
 import 'package:movie_theater/repositories/local_repository.dart';
 import 'package:movie_theater/services/locale.dart';
@@ -47,34 +48,12 @@ class MyApp extends HookWidget {
       ],
       child: AdaptiveTheme(
         light: ThemeData.light().copyWith(
-          textTheme: const TextTheme(
-            bodyMedium: TextStyle(
-              fontWeight: FontWeight.w300,
-              fontSize: 20,
-              color: Colors.black38,
-            ),
-            displayMedium: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-              color: Colors.black54,
-            ),
-          ),
+          textTheme: lightText,
         ),
         dark: ThemeData.dark().copyWith(
-          textTheme: TextTheme(
-            bodyMedium: TextStyle(
-              fontWeight: FontWeight.w300,
-              fontSize: 20,
-              color: Colors.grey.shade200,
-            ),
-            displayMedium: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-              color: Colors.grey.shade400,
-            ),
-          ),
+          textTheme: darkText,
         ),
-        initial: AdaptiveThemeMode.light,
+        initial: AdaptiveThemeMode.dark,
         builder: (theme, darkTheme) => MaterialApp(
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,

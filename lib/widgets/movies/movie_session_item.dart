@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_theater/repositories/api_repository.dart';
+import 'package:movie_theater/repositories/network_repository.dart';
 import 'package:movie_theater/core/extensions.dart';
 import 'package:movie_theater/initialize.dart';
 import 'package:movie_theater/models/session/movie_session.dart';
@@ -33,11 +33,12 @@ class MovieSessionItem extends StatelessWidget {
         child: InkWell(
           onTap: () {
             context.read<MovieCubit>().setMovie(
-                  sl<ApiRepository>().getMovieFromCacheBySessionId(session.id),
+                  sl<NetworkRepository>()
+                      .getMovieFromCacheBySessionId(session.id),
                 );
             Navigator.of(context).pushNamed(
               MoviesRoutesGenerator.booking,
-              arguments: sl<ApiRepository>().fetchSeats(session.id),
+              arguments: sl<NetworkRepository>().fetchSeats(session.id),
             );
           },
           child: Ink(

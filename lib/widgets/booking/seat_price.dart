@@ -37,8 +37,11 @@ class SeatPrice extends StatelessWidget {
             child: FittedBox(
               child: Text(
                 count.toString(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Colors.black
+                      : Colors.white,
                 ),
               ),
             ),
@@ -50,15 +53,19 @@ class SeatPrice extends StatelessWidget {
             ),
           ),
           SizedBox(
-              width: constaints.maxWidth * 0.2,
-              child: FittedBox(
-                child: Text(
-                  isNext ? "+ " : "= ",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+            width: constaints.maxWidth * 0.2,
+            child: FittedBox(
+              child: Text(
+                isNext ? "+ " : "= ",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Colors.black
+                      : Colors.white,
                 ),
-              ))
+              ),
+            ),
+          )
         ],
       );
     });

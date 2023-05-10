@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_theater/repositories/api_repository.dart';
+import 'package:movie_theater/repositories/network_repository.dart';
 import 'package:movie_theater/initialize.dart';
 import 'package:movie_theater/state/comments_cubit/comments_state.dart';
 
@@ -23,7 +23,7 @@ class CommentsCubit extends Cubit<CommentsState> {
     if (movieId != null) {
       lastMovieId = movieId;
     }
-    final comments = await sl<ApiRepository>().fetchComments(lastMovieId);
+    final comments = await sl<NetworkRepository>().fetchComments(lastMovieId);
     final my = comments
         .where(
           (element) => element.isMy,
@@ -40,7 +40,7 @@ class CommentsCubit extends Cubit<CommentsState> {
     );
   }
 
-  Future<bool> postComment() => sl<ApiRepository>().postComments(
+  Future<bool> postComment() => sl<NetworkRepository>().postComments(
         lastMovieId,
         state.content,
         state.rating,

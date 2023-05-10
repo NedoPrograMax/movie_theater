@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:movie_theater/models/movie/movie_model.dart';
-import 'package:movie_theater/repositories/api_repository.dart';
+import 'package:movie_theater/repositories/network_repository.dart';
 import 'package:movie_theater/initialize.dart';
 import 'package:movie_theater/state/movie_cubit/movie_cubit.dart';
 import 'package:movie_theater/widgets/locale_update_observer.dart';
@@ -32,21 +32,24 @@ class MovieChooserContent extends HookWidget {
     final currentSearch = useState("");
 
     useEffect(() {
-      currentSearch.addListener(
-        () {
-          if (timer != null) {
-            timer?.cancel();
-            timer = null;
-          }
+      void listener() {
+        if (timer != null) {
+          timer?.cancel();
+          timer = null;
+        }
 
-          timer = Timer(const Duration(milliseconds: 1500), () {
-            shouldRerunState.value++;
-          });
-        },
-      );
+        timer = Timer(const Duration(milliseconds: 1500), () {
+          shouldRerunState.value++;
+        });
+      }
+
+      currentSearch.addListener(listener);
+
+      return () => currentSearch.removeListener(listener);
     }, [currentSearch]);
+
     final moviesFuture = useMemoized(
-      () => sl<ApiRepository>().fetchMovieModels(
+      () => sl<NetworkRepository>().fetchMovieModels(
         date,
         currentSearch.value,
       ),
@@ -78,7 +81,7 @@ class MovieChooserContent extends HookWidget {
                       opacity: controller.drive(
                         Tween(begin: 0, end: 1),
                       ),
-                      child: RoomsScreen(sl<ApiRepository>().sessionModels),
+                      child: RoomsScreen(sl<NetworkRepository>().sessionModels),
                     ),
                   ],
                 ),

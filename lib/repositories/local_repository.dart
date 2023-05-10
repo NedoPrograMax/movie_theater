@@ -19,7 +19,7 @@ class LocalRepository {
     }
   }
 
-  bool? get isLight => sharedPrefferenes.getBool(_isLight);
+  bool get isLight => sharedPrefferenes.getBool(_isLight) ?? false;
 
   set isLight(bool? value) {
     if (value != null) {

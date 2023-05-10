@@ -14,7 +14,7 @@ class SesionsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<RoomCubit, RoomCubitState>(
       builder: (context, state) => Padding(
-        padding: const EdgeInsets.only(left: 40, right: 10),
+        padding: const EdgeInsets.only(left: 50, right: 5),
         child: ListView.builder(
           controller: controller,
           itemCount: state.sessions.length,

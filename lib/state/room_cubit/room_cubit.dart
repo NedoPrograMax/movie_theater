@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:movie_theater/repositories/api_repository.dart';
+import 'package:movie_theater/repositories/network_repository.dart';
 import 'package:movie_theater/core/extensions.dart';
 import 'package:movie_theater/models/session/room_model.dart';
 import 'package:movie_theater/models/session/seat_model.dart';
@@ -51,7 +51,7 @@ class RoomCubit extends Cubit<RoomCubitState> {
         sessions: choosedSessions.removeCopiesAndOlds().fillWithEmpties(),
         hoursCount: choosedSessions.last.getLastHour(),
         rooms: rooms,
-        movie: sl<ApiRepository>()
+        movie: sl<NetworkRepository>()
             .getMovieFromCache(choosedSessions.first.movieId),
       ),
     );
@@ -67,14 +67,14 @@ class RoomCubit extends Cubit<RoomCubitState> {
     final choosedSession =
         allSessions.firstWhere((session) => session.id == sessionId);
     final choosedMovie =
-        sl<ApiRepository>().getMovieFromCache(choosedSession.movieId);
+        sl<NetworkRepository>().getMovieFromCache(choosedSession.movieId);
     emit(
       state.copyWith(movie: choosedMovie),
     );
   }
 
   Future<List<List<SeatModel>>> getSeats() async {
-    final session = await sl<ApiRepository>().fetchSession(chosedSessionId);
+    final session = await sl<NetworkRepository>().fetchSession(chosedSessionId);
     return session.room.rows.toSeats();
   }
 }

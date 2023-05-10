@@ -14,7 +14,7 @@ import 'package:movie_theater/models/ticket/ticket_model.dart';
 import '../models/session/seat.dart';
 import '../models/session/session_model.dart';
 
-class ApiRepository {
+class NetworkRepository {
   final MovieDataSource movieDataSource;
   List<Movie>? movies;
   List<Session> sessions = [];
@@ -24,7 +24,7 @@ class ApiRepository {
   Session? lastSession;
   final _streamController =
       StreamController<List<List<TicketModel>>>.broadcast();
-  ApiRepository({required this.movieDataSource});
+  NetworkRepository({required this.movieDataSource});
 
   Future<List<SessionModel>> fetchAllSesionsForDay(DateTime date,
       [String? search]) async {

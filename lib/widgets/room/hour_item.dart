@@ -22,7 +22,12 @@ class HourItem extends StatelessWidget {
         ),
         color: color,
       ),
-      child: Text(time),
+      child: Text(
+        time,
+        style: const TextStyle(
+          fontSize: 15,
+        ),
+      ),
     );
   }
 }

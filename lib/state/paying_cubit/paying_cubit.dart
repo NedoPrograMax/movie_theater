@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater/core/constants.dart';
 import 'package:movie_theater/generated/locale_keys.g.dart';
-import 'package:movie_theater/repositories/api_repository.dart';
+import 'package:movie_theater/repositories/network_repository.dart';
 import 'package:movie_theater/exceptions.dart';
 import 'package:movie_theater/initialize.dart';
 import 'package:movie_theater/models/session/seat.dart';
@@ -69,7 +69,7 @@ class PayingCubit extends Cubit<PayingState> {
 
   Future<bool> buySeats(List<SeatModel> seats) async {
     try {
-      return await sl<ApiRepository>().buySeats(
+      return await sl<NetworkRepository>().buySeats(
         seats: seats,
         email: state.email,
         cardNumber: state.cardNumber,

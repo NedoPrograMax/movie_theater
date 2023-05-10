@@ -18,6 +18,7 @@ class UserData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+
     return Padding(
       padding: EdgeInsets.only(right: 8.0, left: width * 0.15),
       child: Form(

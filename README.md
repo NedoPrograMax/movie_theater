@@ -1,16 +1,22 @@
-# movie_theater
 
-A new Flutter project.
+# Notes
 
-## Getting Started
+This app helps you to buy tickets in mvoie theater.
 
-This project is a starting point for a Flutter application.
+App was created as a final project of Empat Flutter School.
 
-A few resources to get you started if this is your first Flutter project:
+API from Empat.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Technology used: Dart/Flutter, Bloc, Shared Preferences, Nested Navigation, Hooks, DIO, Localization ... and much more :)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The first time you open the app it silently authenticates you.
+
+After that you have the possibility to choose a movie
+
+You can easily add a note to the list, edit it, give it a color and delete it!
+
+<img src="https://github.com/NedoPrograMax/movie_theater/blob/master/main.mp4" width="200">
+
+So I'm hoping you're gonna love it)
+
+

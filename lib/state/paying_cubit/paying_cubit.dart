@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater/core/constants.dart';
 import 'package:movie_theater/generated/locale_keys.g.dart';
 import 'package:movie_theater/repositories/network_repository.dart';
-import 'package:movie_theater/exceptions.dart';
+import 'package:movie_theater/models/exceptions.dart';
 import 'package:movie_theater/initialize.dart';
 import 'package:movie_theater/models/session/seat.dart';
 import 'package:movie_theater/models/session/seat_model.dart';

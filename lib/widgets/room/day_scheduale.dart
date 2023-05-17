@@ -38,13 +38,11 @@ class _DaySchedualeState extends State<DayScheduale> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Stack(
-        children: [
-          HoursList(_hoursScrollController),
-          SesionsList(_sessionsScrollController),
-        ],
-      ),
+    return Stack(
+      children: [
+        HoursList(_hoursScrollController),
+        SesionsList(_sessionsScrollController),
+      ],
     );
   }
 }

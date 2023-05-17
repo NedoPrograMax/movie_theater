@@ -27,11 +27,7 @@ class SeatItem extends HookWidget {
         return ChoosedChair(isChoosen, seat.type, seatSize);
       } else {
         context.read<BookingCubit>().removeSeat(seat);
-        return EmptyChair(
-          isChoosen,
-          seat.type,
-          seatSize,
-        );
+        return EmptyChair(isChoosen, seat.type, seatSize);
       }
     } else {
       return TakenChair(seat.type, seatSize);

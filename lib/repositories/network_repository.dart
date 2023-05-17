@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:intl/intl.dart';
 import 'package:movie_theater/core/extensions.dart';
 import 'package:movie_theater/data_sources/movie_data_source.dart';
-import 'package:movie_theater/exceptions.dart';
+import 'package:movie_theater/models/exceptions.dart';
 import 'package:movie_theater/models/comment/comment.dart';
 import 'package:movie_theater/models/movie/movie.dart';
 import 'package:movie_theater/models/movie/movie_model.dart';

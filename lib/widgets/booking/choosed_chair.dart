@@ -5,14 +5,44 @@ import 'package:movie_theater/models/enums/drags.dart';
 import 'package:movie_theater/models/session/seat_type.dart';
 import 'package:movie_theater/widgets/booking/popcorn_image.dart';
 
-class ChoosedChair extends StatelessWidget {
+class ChoosedChair extends StatefulWidget {
   final ValueNotifier isChosen;
   final SeatType type;
   final double seatSize;
   const ChoosedChair(this.isChosen, this.type, this.seatSize, {super.key});
 
+  @override
+  State<ChoosedChair> createState() => _ChoosedChairState();
+}
+
+class _ChoosedChairState extends State<ChoosedChair> {
+  late final Image choosedChairImage;
+  late final Image emptyChairImage;
+
+  @override
+  void initState() {
+    choosedChairImage = Image.asset(
+      getChoosedChairImage(),
+      height: widget.seatSize,
+      width: widget.seatSize,
+    );
+    emptyChairImage = Image.asset(
+      getEmptyChairImage(),
+      height: widget.seatSize,
+      width: widget.seatSize,
+    );
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    //  precacheImage(choosedChairImage.image, context);
+    //   precacheImage(emptyChairImage.image, context);
+    super.didChangeDependencies();
+  }
+
   String getChoosedChairImage() {
-    switch (type) {
+    switch (widget.type) {
       case SeatType.NORMAL:
         return "assets/images/chosen_chair.png";
       case SeatType.BETTER:
@@ -23,7 +53,7 @@ class ChoosedChair extends StatelessWidget {
   }
 
   String getEmptyChairImage() {
-    switch (type) {
+    switch (widget.type) {
       case SeatType.NORMAL:
         return "assets/images/chair.png";
       case SeatType.BETTER:
@@ -36,19 +66,11 @@ class ChoosedChair extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Draggable<Drags>(
-      feedback: PopcronImage(34),
+      feedback: const PopcronImage(34),
       data: Drags.PopcornToDelete,
-      childWhenDragging: Image.asset(
-        getEmptyChairImage(),
-        height: seatSize,
-        width: seatSize,
-      ),
-      child: Image.asset(
-        getChoosedChairImage(),
-        height: seatSize,
-        width: seatSize,
-      ),
-      onDragCompleted: () => isChosen.value = false,
+      childWhenDragging: emptyChairImage,
+      child: choosedChairImage,
+      onDragCompleted: () => widget.isChosen.value = false,
     );
   }
 }

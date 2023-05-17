@@ -14,7 +14,7 @@ import 'package:movie_theater/models/ticket/ticket_model.dart';
 import 'package:movie_theater/services/authentication.dart';
 import 'package:movie_theater/services/locale.dart';
 
-import '../exceptions.dart';
+import '../models/exceptions.dart';
 
 class MovieDataSource {
   Map<String, dynamic> _getHeaders() {

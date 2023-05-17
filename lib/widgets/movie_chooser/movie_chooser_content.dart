@@ -55,40 +55,42 @@ class MovieChooserContent extends HookWidget {
       ),
       [date, shouldRerunState.value],
     );
+
     final movies = useFuture(moviesFuture, preserveState: false);
 
     return Scaffold(
-        appBar: currentIndex.value == 0
-            ? buildSearchBar(controller, currentIndex, currentSearch, context)
-            : buildAppBar(
-                controller,
-                currentIndex,
-                context,
+      appBar: currentIndex.value == 0
+          ? buildSearchBar(controller, currentIndex, currentSearch, context)
+          : buildAppBar(
+              controller,
+              currentIndex,
+              context,
+            ),
+      body: movies.hasData
+          ? ValueListenableBuilder(
+              valueListenable: currentIndex,
+              builder: (context, value, child) => IndexedStack(
+                index: value,
+                children: [
+                  FadeTransition(
+                    opacity: controller.drive(
+                      Tween(begin: 1, end: 0),
+                    ),
+                    child: MoviesScreen(movies.data!),
+                  ),
+                  FadeTransition(
+                    opacity: controller.drive(
+                      Tween(begin: 0, end: 1),
+                    ),
+                    child: RoomsScreen(sl<NetworkRepository>().sessionModels),
+                  ),
+                ],
               ),
-        body: movies.hasData
-            ? ValueListenableBuilder(
-                valueListenable: currentIndex,
-                builder: (context, value, child) => IndexedStack(
-                  index: value,
-                  children: [
-                    FadeTransition(
-                      opacity: controller.drive(
-                        Tween(begin: 1, end: 0),
-                      ),
-                      child: MoviesScreen(movies.data!),
-                    ),
-                    FadeTransition(
-                      opacity: controller.drive(
-                        Tween(begin: 0, end: 1),
-                      ),
-                      child: RoomsScreen(sl<NetworkRepository>().sessionModels),
-                    ),
-                  ],
-                ),
-              )
-            : const Center(
-                child: LoadingMovie(),
-              ));
+            )
+          : const Center(
+              child: LoadingMovie(),
+            ),
+    );
   }
 }
 

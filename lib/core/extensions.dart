@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:movie_theater/core/constants.dart';
 import 'package:movie_theater/models/movie/movie.dart';
 import 'package:movie_theater/models/session/room_model.dart';
-import 'package:movie_theater/models/session/seat.dart';
 import 'package:movie_theater/models/session/row.dart' as row;
 import 'package:movie_theater/models/session/seat_model.dart';
 import 'package:movie_theater/models/session/seat_type.dart';

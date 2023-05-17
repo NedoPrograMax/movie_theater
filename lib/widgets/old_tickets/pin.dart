@@ -36,10 +36,6 @@ class Pin extends HookWidget {
                     tickets: tickets!,
                   ),
           );
-          /*   return Ticket(
-            ticket!,
-            scale: 0.9,
-          ); */
         }
 
         return Container();

@@ -1,16 +1,39 @@
-# movie_theater
 
-A new Flutter project.
+# Notes
 
-## Getting Started
+This app helps you to buy tickets in mvoie theater.
 
-This project is a starting point for a Flutter application.
+App was created as a final project of Empat Flutter School.
 
-A few resources to get you started if this is your first Flutter project:
+API from Empat.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Technology used: Dart/Flutter, Bloc, Shared Preferences, Nested Navigation, Hooks, DIO, Localization ... and much more :)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Also A LOT of packages is used
+
+The first time you open the app it silently authenticates you.
+
+And here are some previews of the app:
+
+
+<img src="https://github.com/NedoPrograMax/movie_theater/blob/master/main(1).gif" width="200">
+
+<img src="https://github.com/NedoPrograMax/movie_theater/blob/master/alternative.gif" width="200">
+
+<img src="https://github.com/NedoPrograMax/movie_theater/blob/master/search.gif" width="200">
+
+<img src="https://github.com/NedoPrograMax/movie_theater/blob/master/seats.gif" width="200">
+
+<img src="https://github.com/NedoPrograMax/movie_theater/blob/master/paying.gif" width="200">
+
+<img src="https://github.com/NedoPrograMax/movie_theater/blob/master/ticket.gif" width="200">
+
+<img src="https://github.com/NedoPrograMax/movie_theater/blob/master/tickets.gif" width="200">
+
+<img src="https://github.com/NedoPrograMax/movie_theater/blob/master/theme.gif" width="200">
+
+<img src="https://github.com/NedoPrograMax/movie_theater/blob/master/language.gif" width="200">
+
+So I'm hoping you're gonna love it)
+
+
